@@ -58,3 +58,108 @@ for estado, lista in estados.items():
     print(f"\n>> {estado.upper()}")
     for c in lista:
         c.exibir()
+
+'''##=====================================================
+#== Carro.py ============================================
+#=====================================================
+class Carro:
+    def __init__(self, marca, modelo, ano=2024, estado="novo"):
+        self.marca  = marca
+        self.modelo = modelo
+        self.ano    = ano
+        self.estado = estado
+    #Exercício 4, número 1.
+    def __str__(self):
+        return self.marca+" "+self.modelo+", "+str(self.ano)+" ("+self.estado+")"
+
+
+#=====================================================
+#== CarroControl.py ======================================
+#=====================================================
+from Carro import Carro
+
+carros = []
+
+def appendCarros():
+    carros.append( Carro("Toyota","Corolla",2024,"Bom") )
+    carros.append( Carro("Ford","Mustang",2023,"Regular") )
+    carros.append( Carro("Volkswagen","Gol",2022,"Ruim") )
+    carros.append( Carro("Volkswagen","Gol",2020,"Regular") )
+    carros.append( Carro("Ford","Ka",2024,"Novo") )
+    carros.append( Carro("Fiat","Siena",2021,"Ruim") )
+    carros.append( Carro("Honda","Civic",2023,"Bom") )
+    carros.append( Carro("Ford","Fusion",2024,"Novo") )
+    carros.append( Carro("Chevrolet","Onix",2022,"Ruim") )
+    carros.append( Carro("Chevrolet","Classic",2023,"Bom") )
+    carros.append( Carro("Fiat","Argo",2024,"Novo") )
+
+#Exercício 4, número 2, letra a.
+def exibirCarrosPorOrdemDeInstancia(carros):
+    i = 0
+    while(i<len(carros)):
+        print(carros[i])
+        i += 1
+
+#Exercício 4, número 2, letra b.
+def exibirCarrosPorMarca(carros,marca):
+    i = 0
+    while(i<len(carros)):
+        if(marca==carros[i].marca):
+            print(carros[i])
+        i += 1
+
+#Exercício 4, número 2, letra c.
+def exibirCarrosPorNaoEstado(carros,estado):
+    i = 0
+    while(i<len(carros)):
+        if(estado!=carros[i].estado):
+            print(carros[i])
+        i += 1
+
+
+#Exercício 4, número 2, letra d.
+def exibirCarrosPorMarcaAlfabeticamente(carros):
+    #Copiar cada um dos elementos para carrosAlf
+    carrosAlf = []
+    i = 0
+    while(i<len(carros)):
+        carrosAlf.append( carros[i] )
+        i += 1
+
+    #Ordenar carrosAlf por ordem alfabetica
+    i = 0
+    while(i<len(carrosAlf)):
+        ii = 0
+        while(ii<len(carrosAlf)-1):
+            if(carros[ii].marca>carros[ii+1].marca):
+                aux = carros[ii].marca
+                carros[ii].marca = carros[ii+1].marca
+                carros[ii+1].marca = aux
+            ii += 1
+        i += 1
+
+    #Exibir arranjo carrosAlf
+    i = 0
+    while(i<len(carros)):
+        print(carros[i])
+        i += 1
+
+appendCarros()
+
+print("Carros por ordem de instancia:")
+exibirCarrosPorOrdemDeInstancia(carros)
+print()
+
+marca = "Fiat"
+print("Carros da marca '"+marca+"'")
+exibirCarrosPorMarca(carros,marca)
+print()
+
+estado = "Ruim"
+print("Carros que não estão com o estado '"+estado+"'")
+exibirCarrosPorNaoEstado(carros,estado)
+print()
+
+print("Carros por ordem de marca alfabeticamente:")
+exibirCarrosPorMarcaAlfabeticamente(carros)
+print()'''
